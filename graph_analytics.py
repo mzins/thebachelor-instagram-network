@@ -9,6 +9,10 @@ def print_metrics(G):
     print(f"Number of edges: {len(G.edges)}")
 
     print(f"Density: {nx.density(G)}")
+    
+    print(f"Diameter: {nx.diameter(G)}")
+    print(f"Average Path: {nx.average_shortest_path_length(G)}")
+
     degrees = [x[1] for x in G.degree]
     print(f"Average Degree: {statistics.mean(degrees)}")
     print(f"Median Degree: {statistics.median(degrees)}")
@@ -20,17 +24,22 @@ def print_metrics(G):
     print(f"Users with highest degree: {degrees[:3]}")
     print(f"Users with lowest degree: {degrees[-3:]}")
 
-    centrality = nx.degree_centrality(G)
+    centrality = nx.betweenness_centrality(G)
     centrality = [(k,v) for k,v in centrality.items()]
-    centrality_val = [v for k,v in nx.degree_centrality(G).items()]
+    centrality_val = [v for k,v in nx.betweenness_centrality(G).items()]
 
     centrality.sort(key=lambda tup: tup[1], reverse=True)
 
     print(f"Average Centrality: {statistics.mean(centrality_val)}")
     print(f"Median Centrality: {statistics.median(centrality_val)}")
 
-    print(f"Users with highest centrality: {centrality[:3]}")
-    print(f"Users with lowest centrality: {centrality[-3:]}")
+    print(f"Users with highest betweenness centrality: {centrality[:3]}")
+
+    eigenvector = nx.eigenvector_centrality(G)
+    eig = [(k,v) for k,v in eigenvector.items()]
+    eig.sort(key=lambda tup: tup[1], reverse=True)
+
+    print(f"Users with highest eigenvector centrality: {eig[:3]}")
 
 def print_contestant_metrics(contestants):
     centrality = nx.degree_centrality(G)
@@ -38,7 +47,7 @@ def print_contestant_metrics(contestants):
     for c in contestants:
         print(c, G.nodes[c]['season'], G.degree(c), centrality[c])
 
-G = nx.read_graphml("bachelor-nation.graphml")
+G = nx.read_graphml("data/bachelor-nation.graphml")
 print_metrics(G)
 
 season_27_nodes = [x for x,y in G.nodes(data=True) if y["season"]=="bachelor-27"]
@@ -65,7 +74,6 @@ for node in G.nodes():
         pairs[key] += 1
 
 pprint(pairs)
-
 
 villains = nx.get_node_attributes(G, "villain")
 finalists = nx.get_node_attributes(G, "finalist")
