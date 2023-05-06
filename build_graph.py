@@ -34,9 +34,9 @@ finalists = ["greggrippo", "justinglaze", "oh_for_schwer", "johnnyxdep",
 for finalist in finalists:
     attrs.get(finalist).update({"finalist": True})
 
-villains = ["thomasajacobs", "hmark01221", "shanae.a", "christinamandrell"]
-for villain in villains:
-    attrs.get(villain).update({"villain": True})
+villians = ["thomasajacobs", "hmark01221", "shanae.a", "christinamandrell"]
+for villian in villians:
+    attrs.get(villian).update({"villian": True})
 
 nx.set_node_attributes(G, attrs)
 

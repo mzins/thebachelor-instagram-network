@@ -75,7 +75,7 @@ for node in G.nodes():
 
 pprint(pairs)
 
-villains = nx.get_node_attributes(G, "villain")
+villians = nx.get_node_attributes(G, "villian")
 finalists = nx.get_node_attributes(G, "finalist")
 
 print_contestant_metrics(finalists)

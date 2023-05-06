@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d3" for="node" attr.name="lead" attr.type="boolean"/>
 <key id="d2" for="node" attr.name="finalist" attr.type="boolean"/>
-<key id="d1" for="node" attr.name="villain" attr.type="boolean"/>
+<key id="d1" for="node" attr.name="villian" attr.type="boolean"/>
 <key id="d0" for="node" attr.name="season" attr.type="string"/>
 <graph edgedefault="undirected"><node id="thealyjay">
   <data key="d0">bachelor-27</data>
